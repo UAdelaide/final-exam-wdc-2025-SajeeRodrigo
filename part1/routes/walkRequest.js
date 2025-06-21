@@ -7,7 +7,7 @@ router.get('/:status', async (req, res) => {
   try {
     const db = await getConnection();
     const [walkRequest] = await db.execute(`
-      SELECT name as dog_name, size, username as owner_username
+      SELECT *
       FROM Users, Dogs
       WHERE Dogs.owner_id = Users.user_id;
     `);
