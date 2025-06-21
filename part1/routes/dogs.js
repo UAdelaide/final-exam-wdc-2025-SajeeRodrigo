@@ -4,11 +4,10 @@ const {getConnection} = require('../db')
 
 /* GET users listing. */
 router.get('/', async (req, res) => {
-  const [rows] = await db.query(`
-    SELECT name as dog_name, size, username as owner_username
-    FROM Users, Dogs
-    WHERE Dogs.owner_id = Users.user_id;
-  `);
-  res.json(rows);
+  try {
+    
+  } catch (err) {
+
+  }
 });
 module.exports = router;
