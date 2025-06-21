@@ -3,7 +3,7 @@ var router = express.Router();
 const {getConnection} = require('../db');
 
 /* GET users listing. */
-router.get('/:status', async (req, res) => {
+router.get('/summary', async (req, res) => {
   try {
     let {status} = req.params;
     const db = await getConnection();
