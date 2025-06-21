@@ -23,3 +23,5 @@ async function initDatabase() {
 async function getConnection() {
     return await mysql.createConnection(dbConfig);
 }
+
+module.exports()
