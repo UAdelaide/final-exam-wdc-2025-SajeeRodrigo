@@ -64,13 +64,13 @@
 
             const role= result.user.role;
             console.log("AAAA",result,role);
-            // if( role === 'owner'){
-            //   window.location.href = '/owner-dashboard.html'
-            // } else if( role === 'owner'){
-            //   window.location.href = '/walker-dashboard.html'
-            // }else {
-            //   this.error = 'User role undefined';
-            // }
+            if( role === 'owner'){
+              window.location.href = '/owner-dashboard.html'
+            } else if( role === 'owner'){
+              window.location.href = '/walker-dashboard.html'
+            }else {
+              this.error = 'User role undefined';
+            }
           } catch ( err) {
             this.error = err;
           }
