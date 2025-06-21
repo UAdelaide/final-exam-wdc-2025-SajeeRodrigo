@@ -20,15 +20,7 @@ let db;
 (async () => {
   try {
     await initDatabase();
-    db = await get
-
-    db = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'DogWalkService',
-      multipleStatements: true
-    });
+    db = await getConnection();
 
     const sqlFilePath = path.join(__dirname, 'dogwalks.sql');
     const schemaSQL = fs.readFileSync(sqlFilePath, 'utf8');
