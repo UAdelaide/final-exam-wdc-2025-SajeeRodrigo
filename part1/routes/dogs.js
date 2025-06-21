@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/items', async (req, res) => {
+router.get('/', async (req, res) => {
   const [rows] = await db.query(`
     SELECT bl.BookID, bi.Title, u.Name AS SellerName, bl.SellerID
     FROM BookListings bl
