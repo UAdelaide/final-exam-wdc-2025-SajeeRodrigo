@@ -126,7 +126,7 @@
 
         async function loadDogs() {
           try {
-            const res = await fetch('/api/dogs/mine', { credentials: 'include' });
+            const res = await fetch('/api/users/dogs/mine', { credentials: 'include' });
             if (!res.ok) throw new Error('Failed to load your dogs');
             myDogs.value = await res.json();
           } catch (err) {
