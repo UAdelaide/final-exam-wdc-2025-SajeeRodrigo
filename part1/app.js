@@ -7,7 +7,7 @@ const fs = require('fs');
 
 var indexRouter = require('./routes/index');
 var dogsRouter = require('./routes/dogs');
-var walkRequestRouter = require('./routes/walkRequest');
+var walkRequestRouter = require('./routes/walkRequest.js');
 
 var app = express();
 
