@@ -6,10 +6,8 @@ const {getConnection} = require('../db');
 router.get('/summary', async (req, res) => {
   try {
     const db = await getConnection();
-    const [walkRequest] = await db.query(`
-      SELECT request_id, Dogs.name as dog_name, requested_time, duration_minutes, location, Users.username as owner_username
-      FROM ((WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id) INNER JOIN Users ON Dogs.owner_id = Users.user_id)
-      WHERE status = 'open';
+    const [result] = await db.query(`
+      SELECT u.;
     `);
     res.json(walkRequest);
   } catch (err) {
