@@ -13,7 +13,9 @@ router.get('/', async (req, res) => {
     `);
     res.json(dogs);
   } catch (err) {
-    res.status(500).json({error : })
+    res.status(500).json({
+      error: err.message
+    });
   }
 });
 module.exports = router;
