@@ -113,5 +113,6 @@ let db;
 
 app.use('/', indexRouter);
 app.use('/api/dogs', dogsRouter);
+app.use('/api/walkrequests', dogsRouter);
 
 module.exports = app;
