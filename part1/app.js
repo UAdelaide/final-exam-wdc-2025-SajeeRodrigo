@@ -63,7 +63,33 @@ let db;
         }
     }
     catch(err){
-        console.log("Failed to insert User details", err)
+        console.log("Failed to insert User details", err);
+    }
+
+    try{
+        const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+        if (dog_count[0].count === 0) {
+          await db.execute(`
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES (SELECT user_id FROM Users WHERE username = 'alice123', 'Max', 'medium');
+
+
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES (SELECT user_id FROM Users WHERE username = 'carol123', 'Bella', 'small');
+
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
+
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
+
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES (SELECT user_id FROM Users WHERE username = 'rodrigo456', 'Sheeba', 'large');
+          `);
+        }
+    }
+    catch(err){
+        console.log("Failed to insert Dog details", err);
     }
 
     try{
@@ -71,26 +97,6 @@ let db;
     }
     catch(err){
         console.log("Failed to insert User details", err)
-    }
-    const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
-    if (dog_count[0].count === 0) {
-      await db.execute(`
-        INSERT INTO Dogs(owner_id, name, size)
-        VALUES (SELECT user_id FROM Users WHERE username = 'alice123', 'Max', 'medium');
-
-
-        INSERT INTO Dogs(owner_id, name, size)
-        VALUES (SELECT user_id FROM Users WHERE username = 'carol123', 'Bella', 'small');
-
-        INSERT INTO Dogs(owner_id, name, size)
-        VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
-
-        INSERT INTO Dogs(owner_id, name, size)
-        VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
-
-        INSERT INTO Dogs(owner_id, name, size)
-        VALUES (SELECT user_id FROM Users WHERE username = 'rodrigo456', 'Sheeba', 'large');
-      `);
     }
 
     const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
