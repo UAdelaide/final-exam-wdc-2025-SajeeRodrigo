@@ -94,7 +94,7 @@ let db;
 
     try{
 
-        const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+        const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM WalkRequests');
         if (req_count[0].count === 0) {
           await db.query(`
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
