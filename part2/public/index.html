@@ -53,7 +53,9 @@
                 password: this.password
               })
             });
-            const data = await res.json();
+            const result = await res.json();
+
+            if(!res.ok)
           }
         }
       }
