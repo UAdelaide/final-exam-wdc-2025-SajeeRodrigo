@@ -12,16 +12,14 @@ async function initDatabase() {
     const connection = await mysql.createConnection({
         host: dbConfig.host,
         user: dbConfig.user,
-        password: dbConfig.password,
-        database: dbConfig.,
-        multipleStatements: true
+        password: dbConfig.password
     });
     await connection.execute('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 }
 
 async function getConnection() {
-    return mysql.createConnection(dbConfig);
+    return awaimysql.createConnection(dbConfig);
 }
 
 module.exports = {initDatabase, getConnection};
