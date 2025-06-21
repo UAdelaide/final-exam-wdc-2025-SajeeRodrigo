@@ -45,7 +45,7 @@ let db;
   } catch (err) {
     console.error('Error setting up database. Ensure MySQL is running:', err.message);
   }
-})()
+})();
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
