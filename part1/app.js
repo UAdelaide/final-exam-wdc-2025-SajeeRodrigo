@@ -66,57 +66,57 @@ let db;
         console.error("Failed to insert User details", err);
     }
 
-    // try{
-    //     const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
-    //     if (dog_count[0].count === 0) {
-    //       await db.query(`
-    //         INSERT INTO Dogs(owner_id, name, size)
-    //         VALUES ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium');
+    try{
+        const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+        if (dog_count[0].count === 0) {
+          await db.query(`
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium');
 
 
-    //         INSERT INTO Dogs(owner_id, name, size)
-    //         VALUES ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small');
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small');
 
-    //         INSERT INTO Dogs(owner_id, name, size)
-    //         VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123'), 'Jimmy', 'small');
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123'), 'Jimmy', 'small');
 
-    //         INSERT INTO Dogs(owner_id, name, size)
-    //         VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123'), 'Tommy', 'medium');
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123'), 'Tommy', 'medium');
 
-    //         INSERT INTO Dogs(owner_id, name, size)
-    //         VALUES ((SELECT user_id FROM Users WHERE username = 'rodrigo456'), 'Sheeba', 'large');
-    //       `);
-    //     }
-    // }
-    // catch(err){
-    //     console.error("Failed to insert Dog details", err);
-    // }
+            INSERT INTO Dogs(owner_id, name, size)
+            VALUES ((SELECT user_id FROM Users WHERE username = 'rodrigo456'), 'Sheeba', 'large');
+          `);
+        }
+    }
+    catch(err){
+        console.error("Failed to insert Dog details", err);
+    }
 
-    // try{
+    try{
 
-    //     const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
-    //     if (req_count[0].count === 0) {
-    //       await db.execute(`
-    //         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-    //         VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open');
+        const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+        if (req_count[0].count === 0) {
+          await db.query(`
+            INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open');
 
-    //         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-    //         VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
+            INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
 
-    //         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-    //         VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
+            INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
 
-    //         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-    //         VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+            INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
 
-    //         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-    //         VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Tommy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
-    //       `);
-    //     }
-    // }
-    // catch(err){
-    //     console.error("Failed to insert walk request details", err);
-    // }
+            INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Tommy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+          `);
+        }
+    }
+    catch(err){
+        console.error("Failed to insert walk request details", err);
+    }
 
 
     console.log('Database and tables setup complete.');
