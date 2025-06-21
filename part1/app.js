@@ -36,7 +36,6 @@ let db;
 
     // Create a table if it doesn't exist
     await db.execute(`
-
         CREATE TABLE Users (
             user_id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(50) UNIQUE NOT NULL,
@@ -75,7 +74,6 @@ let db;
             FOREIGN KEY (owner_id) REFERENCES Users(user_id),
             CONSTRAINT unique_rating_per_walk UNIQUE (request_id)
         );
-
     `);
 
     // Insert data if table is empty
