@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
     secret : 'SR!8sd@vf',
-    resave: false;
-    saveUni
+    resave: false,
+    saveUninitialized: false
 }))
 
 // Routes
