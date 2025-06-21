@@ -63,7 +63,7 @@ let db;
         }
     }
     catch(err){
-        console.log("Failed to insert User details", err);
+        console.error("Failed to insert User details", err);
     }
 
     try{
@@ -89,7 +89,7 @@ let db;
         }
     }
     catch(err){
-        console.log("Failed to insert Dog details", err);
+        console.error("Failed to insert Dog details", err);
     }
 
     try{
@@ -115,7 +115,7 @@ let db;
         }
     }
     catch(err){
-        console.log("Failed to insert walk request details", err);
+        console.error("Failed to insert walk request details", err);
     }
 
 
