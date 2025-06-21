@@ -11,9 +11,9 @@ const dbConfig = {
 async function initDatabase() {
     const connection = await mysql.createConnection({
         host: dbConfig.host,
-        user: 'root',
-        password: '',
-        database: 'DogWalkService',
+        user: dbConfig.user,
+        password: dbConfig.password,
+        database: dbConfig.,
         multipleStatements: true
     });
     await connection.execute('CREATE DATABASE IF NOT EXISTS DogWalkService');
@@ -24,4 +24,4 @@ async function getConnection() {
     return mysql.createConnection(dbConfig);
 }
 
-module.exports = {initDatabase, getConnection
+module.exports = {initDatabase, getConnection};
