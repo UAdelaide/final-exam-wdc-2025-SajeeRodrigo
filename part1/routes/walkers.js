@@ -18,10 +18,10 @@ router.get('/summary', async (req, res) => {
       WHERE Users.role = 'walker'
       GROUP BY Users.user_id, Users.username;
     `);
-    res.json(walkRequest);
+    res.json(result);
   } catch (err) {
     res.status(500).json({
-      message: 'Failed to fetch dogs',
+      message: 'Failed to fetch walk',
       error: err.message
     });
   }
