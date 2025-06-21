@@ -15,7 +15,7 @@ router.get('/:status', async (req, res) => {
     res.json(walkRequest);
   } catch (err) {
     res.status(500).json({
-      message: 'Failed to fetch dogs',
+      message: 'Failed to fetch open walk request ',
       error: err.message
     });
   }

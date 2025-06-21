@@ -21,7 +21,7 @@ router.get('/summary', async (req, res) => {
     res.json(result);
   } catch (err) {
     res.status(500).json({
-      message: 'Failed to fetch walk',
+      message: 'Failed to fetch walkers summary',
       error: err.message
     });
   }
