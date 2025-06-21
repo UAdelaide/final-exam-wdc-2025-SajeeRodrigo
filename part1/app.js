@@ -44,7 +44,7 @@ let db;
     try{
         const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
         if (user_count[0].count === 0) {
-        await db.execute(`
+        await db.query(`
             INSERT INTO Users (username, email, password_hash, role)
             VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
 
@@ -69,7 +69,7 @@ let db;
     // try{
     //     const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     //     if (dog_count[0].count === 0) {
-    //       await db.execute(`
+    //       await db.query(`
     //         INSERT INTO Dogs(owner_id, name, size)
     //         VALUES ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium');
 
