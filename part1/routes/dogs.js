@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', async (req, res) => {
   const [rows] = await db.query(`
     SELECT *
-    FROM BookListings bl
+    FROM Dogs
     JOIN BookInfo bi ON bl.BookInfoID = bi.BookInfoID
     JOIN Users u ON bl.SellerID = u.UserID
   `);
