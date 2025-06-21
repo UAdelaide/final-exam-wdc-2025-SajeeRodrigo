@@ -45,51 +45,51 @@ let db;
     if (rows[0].count === 0) {
       await db.execute(`
         INSERT INTO Users (username, email, password_hash, role)
-VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
+        VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
 
-INSERT INTO Users (username, email, password_hash, role)
-VALUES ('bobwalker', 'bob@example.com', 'hashed456', 'walker');
+        INSERT INTO Users (username, email, password_hash, role)
+        VALUES ('bobwalker', 'bob@example.com', 'hashed456', 'walker');
 
-INSERT INTO Users (username, email, password_hash, role)
-VALUES ('carol123', 'carol@example.com', 'hashed789', 'owner');
+        INSERT INTO Users (username, email, password_hash, role)
+        VALUES ('carol123', 'carol@example.com', 'hashed789', 'owner');
 
-INSERT INTO Users (username, email, password_hash, role)
-VALUES ('sajee123', 'sajee@example.com', 'hashed777', 'owner');
+        INSERT INTO Users (username, email, password_hash, role)
+        VALUES ('sajee123', 'sajee@example.com', 'hashed777', 'owner');
 
-INSERT INTO Users (username, email, password_hash, role)
-VALUES ('rodrigo456', 'rodrigo@example.com', 'hashed888', 'walker');
+        INSERT INTO Users (username, email, password_hash, role)
+        VALUES ('rodrigo456', 'rodrigo@example.com', 'hashed888', 'walker');
 
-INSERT INTO Dogs(owner_id, name, size)
-VALUES (SELECT user_id FROM Users WHERE username = 'alice123', 'Max', 'medium');
-
-
-INSERT INTO Dogs(owner_id, name, size)
-VALUES (SELECT user_id FROM Users WHERE username = 'carol123', 'Bella', 'small');
-
-INSERT INTO Dogs(owner_id, name, size)
-VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
-
-INSERT INTO Dogs(owner_id, name, size)
-VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
-
-INSERT INTO Dogs(owner_id, name, size)
-VALUES (SELECT user_id FROM Users WHERE username = 'rodrigo456', 'Sheeba', 'large');
-
-INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-VAUES (SELECT dog_id FROM Dogs WHERE name = 'Max', '2025-06-10 08:00:00', 30, 'Parklands', 'open');
-
-INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-VAUES (SELECT dog_id FROM Dogs WHERE name = 'Bella', '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
-
-INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-VAUES (SELECT dog_id FROM Dogs WHERE name = 'Jimmy', '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
-
-INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-VAUES (SELECT dog_id FROM Dogs WHERE name = 'Jimmy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+        INSERT INTO Dogs(owner_id, name, size)
+        VALUES (SELECT user_id FROM Users WHERE username = 'alice123', 'Max', 'medium');
 
 
-INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-VAUES (SELECT dog_id FROM Dogs WHERE name = 'Tommy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+        INSERT INTO Dogs(owner_id, name, size)
+        VALUES (SELECT user_id FROM Users WHERE username = 'carol123', 'Bella', 'small');
+
+        INSERT INTO Dogs(owner_id, name, size)
+        VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
+
+        INSERT INTO Dogs(owner_id, name, size)
+        VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
+
+        INSERT INTO Dogs(owner_id, name, size)
+        VALUES (SELECT user_id FROM Users WHERE username = 'rodrigo456', 'Sheeba', 'large');
+
+        INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+        VAUES (SELECT dog_id FROM Dogs WHERE name = 'Max', '2025-06-10 08:00:00', 30, 'Parklands', 'open');
+
+        INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+        VAUES (SELECT dog_id FROM Dogs WHERE name = 'Bella', '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
+
+        INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+        VAUES (SELECT dog_id FROM Dogs WHERE name = 'Jimmy', '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
+
+        INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+        VAUES (SELECT dog_id FROM Dogs WHERE name = 'Jimmy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+
+
+        INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
+        VAUES (SELECT dog_id FROM Dogs WHERE name = 'Tommy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
       `);
     }
 
