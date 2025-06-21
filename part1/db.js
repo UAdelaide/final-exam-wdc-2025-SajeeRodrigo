@@ -9,5 +9,11 @@ const dbConfig = {
 };
 
 async function initDatabase() {
-    
+    const connection = await mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'DogWalkService',
+        multipleStatements: true
+    });
 }
