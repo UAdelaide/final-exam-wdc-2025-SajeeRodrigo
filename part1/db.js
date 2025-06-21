@@ -21,5 +21,5 @@ async function initDatabase() {
 }
 
 async function getConnection() {
-    
+    return await mysql.createConnection(dbC)
 }
