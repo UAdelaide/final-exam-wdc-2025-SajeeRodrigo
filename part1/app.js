@@ -83,7 +83,7 @@ let db;
     }
 
     const [req_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
-    if (dog_count[0].count === 0) {
+    if (req_count[0].count === 0) {
       await db.execute(`
         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
         VAUES (SELECT dog_id FROM Dogs WHERE name = 'Max', '2025-06-10 08:00:00', 30, 'Parklands', 'open');
@@ -96,7 +96,6 @@ let db;
 
         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
         VAUES (SELECT dog_id FROM Dogs WHERE name = 'Jimmy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
-
 
         INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
         VAUES (SELECT dog_id FROM Dogs WHERE name = 'Tommy', '2025-06-11 10:00:00', 60, 'Parafield', 'open');
