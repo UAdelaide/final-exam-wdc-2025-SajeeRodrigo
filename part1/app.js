@@ -114,22 +114,7 @@ let db;
 })();
 
 app.use('/', indexRouter);
-app.use('/api/dogs', async (req, res) => {
-  try {
-    const db = await getConnection();
-    const [dogs] = await db.execute(`
-      SELECT name as dog_name, size, username as owner_username
-      FROM Users, Dogs
-      WHERE Dogs.owner_id = Users.user_id;
-    `);
-    res.json(dogs);
-  } catch (err) {
-    res.status(500).json({
-      message: 'Failed to fetch dogs',
-      error: err.message
-    });
-  }
-});
+app.use('/api/dogs', dogsRouter);
 app.use('/api/walkrequests/', walkRequestRouter);
 app.use('/api/walkers/', walkersRouter);
 
