@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const 
+const {getConnection} = require('../db')
 
 /* GET users listing. */
 router.get('/', async (req, res) => {
