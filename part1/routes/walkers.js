@@ -7,7 +7,7 @@ router.get('/summary', async (req, res) => {
   try {
     const db = await getConnection();
     const [result] = await db.query(`
-      SELECT Users.username AS walker_username, COUNT(DISTINCT WalkRequests.ratings_id) AS total_ratings, AVG(WalkRequests.rating) as average_rating)
+      SELECT Users.username AS walker_username, COUNT(DISTINCT W.ratings_id) AS total_ratings, AVG(WalkRequests.rating) as average_rating)
       FROM Users LEFT JOIN WalkRatings ON WalkRatings.walker_id = Users.user_id
           LEFT JOIN WalkRequests ON WalkRequest.request_id = WalkRatings.request_id AND WalkRequest.status = 'completed'
       WHERE Users.role = 'walker'
