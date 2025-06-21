@@ -113,6 +113,6 @@ let db;
 
 app.use('/', indexRouter);
 app.use('/api/dogs', dogsRouter);
-app.use('/api/walkrequests/:status', dogsRouter);
+app.use('/api/walkrequests/:status', walkRequestRouter);
 
 module.exports = app;
