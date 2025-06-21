@@ -5,7 +5,8 @@ var router = express.Router();
 router.get('/', async (req, res) => {
   const [rows] = await db.query(`
     SELECT name as dog_name, size, username as owner_username
-    FROM 
+    FROM Users, Dogs
+    WHERE Dogs
 
   `);
   res.json(rows);
