@@ -68,7 +68,9 @@
             }else {
               this.error = 'User role undefined';
             }
-          } catch
+          } catch ( err) {
+            this.error = err;
+          }
         }
       }
     }).mount('#app');
