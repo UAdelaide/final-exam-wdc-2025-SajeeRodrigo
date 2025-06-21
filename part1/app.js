@@ -45,7 +45,7 @@ let db;
 
     }
     catch(err){
-        console.log("")
+        console.log("Failed to insert User ", err)
     }
     const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (user_count[0].count === 0) {
