@@ -7,7 +7,7 @@ router.get('/:status', async (req, res) => {
   try {
     const db = await getConnection();
     const [walkRequest] = await db.execute(`
-      SELECT request_id, Dogs.dog_name
+      SELECT request_id, Dogs.name as dog_name, requested_time
       FROM ((WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id) INNER JOIN Users ON Dogs.owner_id = Users.user_id);
     `);
     res.json(walkRequest);
