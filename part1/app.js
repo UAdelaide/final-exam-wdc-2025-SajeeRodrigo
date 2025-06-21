@@ -42,7 +42,6 @@ let db;
     await db.query(schemaSQL);
 
     try{
-
         const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
         if (user_count[0].count === 0) {
         await db.execute(`
@@ -67,6 +66,12 @@ let db;
         console.log("Failed to insert User details", err)
     }
 
+    try{
+
+    }
+    catch(err){
+        console.log("Failed to insert User details", err)
+    }
     const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (dog_count[0].count === 0) {
       await db.execute(`
