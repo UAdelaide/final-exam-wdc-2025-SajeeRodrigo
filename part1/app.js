@@ -4,17 +4,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+let db;
 
 (async () => {
   try {
@@ -26,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
     });
 
     // Create the database if it doesn't exist
-    await connection.query('CREATE DATABASE IF NOT EXISTS testdb');
+    await connection.query('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 
     // Now connect to the created database
@@ -34,16 +31,51 @@ app.use(express.static(path.join(__dirname, 'public')));
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'testdb'
+      database: 'DogWalkService'
     });
 
     // Create a table if it doesn't exist
     await db.execute(`
-      CREATE TABLE IF NOT EXISTS books (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255),
-        author VARCHAR(255)
+
+      CREATE TABLE Users (
+        user_id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        role ENUM('owner', 'walker') NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
+      CREATE TABLE Dogs (
+        dog_id INT AUTO_INCREMENT PRIMARY KEY,
+        owner_id INT NOT NULL,
+        name VARCHAR(50) NOT NULL,
+        size ENUM('small', 'medium', 'large') NOT NULL,
+        FOREIGN KEY (owner_id) REFERENCES Users(user_id)
+      )
+      CREATE TABLE WalkRequests (
+        request_id INT AUTO_INCREMENT PRIMARY KEY,
+        dog_id INT NOT NULL,
+        requested_time DATETIME NOT NULL,
+        duration_minutes INT NOT NULL,
+        location VARCHAR(255) NOT NULL,
+        status ENUM('open', 'accepted', 'completed', 'cancelled') DEFAULT 'open',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (dog_id) REFERENCES Dogs(dog_id)
+      )
+      CREATE TABLE WalkRatings (
+        rating_id INT AUTO_INCREMENT PRIMARY KEY,
+        request_id INT NOT NULL,
+        walker_id INT NOT NULL,
+        owner_id INT NOT NULL,
+        rating INT CHECK (rating BETWEEN 1 AND 5),
+        comments TEXT,
+        rated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (request_id) REFERENCES WalkRequests(request_id),
+        FOREIGN KEY (walker_id) REFERENCES Users(user_id),
+        FOREIGN KEY (owner_id) REFERENCES Users(user_id),
+        CONSTRAINT unique_rating_per_walk UNIQUE (request_id)
+    );
+
     `);
 
     // Insert data if table is empty
@@ -61,10 +93,16 @@ app.use(express.static(path.join(__dirname, 'public')));
   }
 })();
 
+// Route to return books as JSON
+app.get('/', async (req, res) => {
+  try {
+    const [books] = await db.execute('SELECT * FROM books');
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch books' });
+  }
+});
 
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
-
