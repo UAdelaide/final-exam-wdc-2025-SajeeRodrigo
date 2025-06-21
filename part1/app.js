@@ -41,8 +41,12 @@ let db;
     const schemaSQL = fs.readFileSync(sqlFilePath, 'utf8');
     await db.query(schemaSQL);
 
-    try()
-    catch(err)
+    try{
+
+    }
+    catch(err){
+        console.log("")
+    }
     const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (user_count[0].count === 0) {
       await db.execute(`
