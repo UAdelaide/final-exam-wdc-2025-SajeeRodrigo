@@ -16,5 +16,6 @@ async function initDatabase() {
         database: 'DogWalkService',
         multipleStatements: true
     });
-    await connection.execute()
+    await connection.execute('CREATE DATABASE IF NOT EXISTS DogWalkService');
+    await connection.end();
 }
