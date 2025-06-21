@@ -43,28 +43,28 @@ let db;
 
     try{
 
+        const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
+        if (user_count[0].count === 0) {
+        await db.execute(`
+            INSERT INTO Users (username, email, password_hash, role)
+            VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
+
+            INSERT INTO Users (username, email, password_hash, role)
+            VALUES ('bobwalker', 'bob@example.com', 'hashed456', 'walker');
+
+            INSERT INTO Users (username, email, password_hash, role)
+            VALUES ('carol123', 'carol@example.com', 'hashed789', 'owner');
+
+            INSERT INTO Users (username, email, password_hash, role)
+            VALUES ('sajee123', 'sajee@example.com', 'hashed777', 'owner');
+
+            INSERT INTO Users (username, email, password_hash, role)
+            VALUES ('rodrigo456', 'rodrigo@example.com', 'hashed888', 'walker');
+        `);
+        }
     }
     catch(err){
-        console.log("Failed to insert User ", err)
-    }
-    const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
-    if (user_count[0].count === 0) {
-      await db.execute(`
-        INSERT INTO Users (username, email, password_hash, role)
-        VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
-
-        INSERT INTO Users (username, email, password_hash, role)
-        VALUES ('bobwalker', 'bob@example.com', 'hashed456', 'walker');
-
-        INSERT INTO Users (username, email, password_hash, role)
-        VALUES ('carol123', 'carol@example.com', 'hashed789', 'owner');
-
-        INSERT INTO Users (username, email, password_hash, role)
-        VALUES ('sajee123', 'sajee@example.com', 'hashed777', 'owner');
-
-        INSERT INTO Users (username, email, password_hash, role)
-        VALUES ('rodrigo456', 'rodrigo@example.com', 'hashed888', 'walker');
-      `);
+        console.log("Failed to insert User details", err)
     }
 
     const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
