@@ -8,7 +8,7 @@ router.get('/:status', async (req, res) => {
     const db = await getConnection();
     const [walkRequest] = await db.execute(`
       SELECT *
-      FROM WalkRequests;
+      FROM ((WalkRequests INNER JOIN ));
     `);
     res.json(walkRequest);
   } catch (err) {
