@@ -6,12 +6,12 @@ const {getConnection} = require('../db');
 router.get('/', async (req, res) => {
   try {
     const db = await getConnection();
-    const [dogs] = await db.execute(`
+    const [walkRequest] = await db.execute(`
       SELECT name as dog_name, size, username as owner_username
       FROM Users, Dogs
       WHERE Dogs.owner_id = Users.user_id;
     `);
-    res.json(dogs);
+    res.json(walkRequest);
   } catch (err) {
     res.status(500).json({
       message: 'Failed to fetch dogs',
