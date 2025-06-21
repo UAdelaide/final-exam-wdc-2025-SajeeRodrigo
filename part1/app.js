@@ -6,7 +6,6 @@ const {initDatabase, getConnection} = require('./db.js');
 const fs = require('fs');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
