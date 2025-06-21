@@ -5,7 +5,7 @@ const {getConnection} = require('../db');
 /* GET users listing. */
 router.get('/:status', async (req, res) => {
   try {
-    let status = req.params.status
+    let status = req.params.status;
     const db = await getConnection();
     const [walkRequest] = await db.execute(`
       SELECT request_id, Dogs.name as dog_name, requested_time, duration_minutes, location, Users.username as owner_username
