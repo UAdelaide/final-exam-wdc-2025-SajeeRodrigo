@@ -41,6 +41,8 @@ let db;
     const schemaSQL = fs.readFileSync(sqlFilePath, 'utf8');
     await db.query(schemaSQL);
 
+    
+
     console.log('Database and tables setup complete.');
   } catch (err) {
     console.error('Error setting up database. Ensure MySQL is running:', err.message);
