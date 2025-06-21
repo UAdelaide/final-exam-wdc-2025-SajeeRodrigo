@@ -6,4 +6,8 @@ const dbConfig = {
     password: '',
     database: 'DogWalkService',
     multipleStatements: true
+};
+
+async function initDatabase() {
+    
 }
