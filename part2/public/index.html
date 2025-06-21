@@ -57,13 +57,13 @@
               })
             });
             const result = await res.json();
-            console.log(result);
             if(!res.ok){
               this.error = result.error || 'Login failed';
               return;
             }
 
             const role= result.user.role;
+            console.log("AAAA",result,role);
             // if( role === 'owner'){
             //   window.location.href = '/owner-dashboard.html'
             // } else if( role === 'owner'){
