@@ -22,4 +22,4 @@ async function getConnection() {
     return mysql.createConnection(dbConfig);
 }
 
-module.exports = {initDatabase, getConnection};
+module.exports = { initDatabase, getConnection };
