@@ -19,7 +19,7 @@ async function initDatabase() {
 }
 
 async function getConnection() {
-    return awaimysql.createConnection(dbConfig);
+    return mysql.createConnection(dbConfig);
 }
 
 module.exports = {initDatabase, getConnection};
