@@ -77,6 +77,23 @@
           }
         }
 
+        async function logout() {
+          try {
+            const res = await fetch('/users/logout', {
+              method: 'POST',
+              credentials: 'include'
+            });
+            if (res.ok) {
+              window.location.href = '/';
+            } else {
+              alert('Logout failed');
+            }
+          } catch (err) {
+            alert('Logout error');
+          }
+        }
+
+
         onMounted(() => {
           loadWalkRequests();
         });
@@ -85,7 +102,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout
         };
       }
     }).mount('#app');
