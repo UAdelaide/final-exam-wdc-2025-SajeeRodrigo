@@ -98,19 +98,19 @@ let db;
         if (req_count[0].count === 0) {
           await db.query(`
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open');
+            VALUES ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open');
 
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
+            VALUES ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted');
 
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
+            VALUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-10 10:30:00', 30, 'Northfield', 'completed');
 
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+            VALUES ((SELECT dog_id FROM Dogs WHERE name = 'Jimmy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
 
             INSERT INTO WalkRequests(dog_id, requested_time, duration_minutes, location, status)
-            VAUES ((SELECT dog_id FROM Dogs WHERE name = 'Tommy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
+            VALUES ((SELECT dog_id FROM Dogs WHERE name = 'Tommy'), '2025-06-11 10:00:00', 60, 'Parafield', 'open');
           `);
         }
     }
