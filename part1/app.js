@@ -71,17 +71,17 @@ let db;
         if (dog_count[0].count === 0) {
           await db.execute(`
             INSERT INTO Dogs(owner_id, name, size)
-            VALUES (SELECT user_id FROM Users WHERE username = 'alice123', 'Max', 'medium');
+            VALUES ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium');
 
 
             INSERT INTO Dogs(owner_id, name, size)
-            VALUES (SELECT user_id FROM Users WHERE username = 'carol123', 'Bella', 'small');
+            VALUES ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small');
 
             INSERT INTO Dogs(owner_id, name, size)
-            VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
+            VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123, 'Jimmy', 'small');
 
             INSERT INTO Dogs(owner_id, name, size)
-            VALUES (SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
+            VALUES ((SELECT user_id FROM Users WHERE username = 'sajee123, 'Tommy', 'medium');
 
             INSERT INTO Dogs(owner_id, name, size)
             VALUES (SELECT user_id FROM Users WHERE username = 'rodrigo456', 'Sheeba', 'large');
