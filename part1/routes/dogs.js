@@ -4,8 +4,8 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', async (req, res) => {
   const [rows] = await db.query(`
-    SELECT name as dog_name, 
-    FROM
+    SELECT name as dog_name, size, username as owner_username
+    FROM 
 
   `);
   res.json(rows);
