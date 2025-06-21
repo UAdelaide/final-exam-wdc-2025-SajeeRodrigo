@@ -6,7 +6,7 @@ const mysql = require('mysql2/promise');
 const fs = require('fs');
 
 var indexRouter = require('./routes/index');
-var dogRouter = require('./routes/dogs');
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-let db = require('./db.js')
+let db;
 
 (async () => {
   try {
@@ -126,6 +126,6 @@ let db = require('./db.js')
 })();
 
 app.use('/', indexRouter);
-app.use('/api/dogs', dogRouter);
+app.use('/api/dogs', dogsRouter);
 
 module.exports = app;
