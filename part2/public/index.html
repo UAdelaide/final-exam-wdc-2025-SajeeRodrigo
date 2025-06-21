@@ -65,6 +65,8 @@
               window.location.href = '/owner-dashboard.html'
             } else if( role === 'owner'){
               window.location.href = '/walker-dashboard.html'
+            }else {
+              this.error = 'User role undefined'
             }
           }
         }
