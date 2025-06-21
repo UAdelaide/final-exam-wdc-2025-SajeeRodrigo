@@ -26,7 +26,7 @@ let db;
       password: ''
     });
 
-    await connection.execute('CREATE DATABASE IF NOT EXISTS DogWalkService');
+    await connection.query('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 
     db = await mysql.createConnection({
