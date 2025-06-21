@@ -1,12 +1,12 @@
 const mysql = require('mysql2/promise');
 
-const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'DogWalkService',
-    multipleStatements: true
-};
+// const dbConfig = {
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'DogWalkService',
+//     multipleStatements: true
+// };
 
 async function initDatabase() {
     const connection = await mysql.createConnection({
@@ -16,4 +16,5 @@ async function initDatabase() {
         database: 'DogWalkService',
         multipleStatements: true
     });
+    await connection.execute()
 }
