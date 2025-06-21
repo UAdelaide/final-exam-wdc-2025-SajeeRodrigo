@@ -6,7 +6,9 @@ const {getConnection} = require('../db')
 router.get('/', async (req, res) => {
   try {
     const db = await getConnection();
-    const [users] = 
+    const [users] = await db.execute(`
+      
+    `)
   } catch (err) {
 
   }
