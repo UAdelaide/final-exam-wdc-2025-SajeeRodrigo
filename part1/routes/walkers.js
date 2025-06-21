@@ -7,7 +7,7 @@ router.get('/summary', async (req, res) => {
   try {
     const db = await getConnection();
     const [result] = await db.query(`
-      SELECT Users.username AS walker_username, COUNT(DISTINCT WalkRequest);
+      SELECT Users.username AS walker_username, COUNT(DISTINCT WalkRequests.ratings_id) AS;
     `);
     res.json(walkRequest);
   } catch (err) {
