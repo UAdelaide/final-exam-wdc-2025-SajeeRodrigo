@@ -45,6 +45,8 @@
       },
       methods: {
         async handleLogin(){
+          event.preventDefault();
+          this.error = null;
           try{
             const res = await fetch('/api/users/login',{
               method: 'POST',
@@ -64,13 +66,13 @@
 
             const role= result.user.role;
             console.log("AAAA",result,role);
-            // if( role === 'owner'){
-            //   window.location.href = '/owner-dashboard.html'
-            // } else if( role === 'owner'){
-            //   window.location.href = '/walker-dashboard.html'
-            // }else {
-            //   this.error = 'User role undefined';
-            // }
+            if( role === 'owner'){
+              window.location.href = '/owner-dashboard.html'
+            } else if( role === 'owner'){
+              window.location.href = '/walker-dashboard.html'
+            }else {
+              this.error = 'User role undefined';
+            }
           } catch ( err) {
             this.error = err;
           }
