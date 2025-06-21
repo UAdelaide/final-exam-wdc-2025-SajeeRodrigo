@@ -57,7 +57,7 @@
               })
             });
             const result = await res.json();
-
+            console.log(result);
             if(!res.ok){
               this.error = result.error || 'Login failed';
               return;
