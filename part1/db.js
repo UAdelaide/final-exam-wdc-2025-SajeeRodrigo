@@ -10,7 +10,7 @@ const dbConfig = {
 
 async function initDatabase() {
     const connection = await mysql.createConnection({
-        host: 'localhost',
+        host: dbConfig.host,
         user: 'root',
         password: '',
         database: 'DogWalkService',
@@ -21,7 +21,7 @@ async function initDatabase() {
 }
 
 async function getConnection() {
-    return await mysql.createConnection(dbConfig);
+    return mysql.createConnection(dbConfig);
 }
 
-module.exports = {initDatabase, getConnection};
+module.exports = {initDatabase, getConnection
