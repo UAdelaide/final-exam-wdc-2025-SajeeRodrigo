@@ -11,7 +11,7 @@ router.get('/:status', async (req, res) => {
       SELECT request_id, Dogs.name as dog_name, requested_time, duration_minutes, location, Users.username as owner_username
       FROM ((WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id) INNER JOIN Users ON Dogs.owner_id = Users.user_id)
       WHERE status == ?;
-    `);
+    `,[status]);
     res.json(walkRequest);
   } catch (err) {
     res.status(500).json({
