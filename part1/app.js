@@ -41,8 +41,8 @@ let db;
     const schemaSQL = fs.readFileSync(sqlFilePath, 'utf8');
     await db.query(schemaSQL);
 
-    const [rows] = await db.execute('SELECT COUNT(*) AS count FROM Users');
-    if (rows[0].count === 0) {
+    const [user_count] = await db.execute('SELECT COUNT(*) AS count FROM Users');
+    if (user_count[0].count === 0) {
       await db.execute(`
         INSERT INTO Users (username, email, password_hash, role)
         VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner');
@@ -60,7 +60,7 @@ let db;
         VALUES ('rodrigo456', 'rodrigo@example.com', 'hashed888', 'walker');
       `);
     }
-    const [rows] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+    const [dog_count] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (rows[0].count === 0) {
       await db.execute(`
         INSERT INTO Dogs(owner_id, name, size)
